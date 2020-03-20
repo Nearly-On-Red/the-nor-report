@@ -1,0 +1,57 @@
+.chat-line__message {
+    position: relative;
+}
+
+.chat-line__message:hover  {
+    background-color: rgba(127, 127, 127, 0.3);
+}
+
+.nor-report-btn {
+    position: absolute;
+    top: 0.1em;
+    right: 0.2em;
+    z-index: 100;
+    border-radius: 0.1em;
+    padding: 0.2em 0.4em;
+
+    color: white;
+    background-color: red;
+    font-weight: bold;
+
+    display: none;
+}
+
+.chat-line__message:hover .nor-report-btn {
+    display: inline-block;
+}
+
+.nor-report-wrapper {
+    position: absolute;
+    z-index: 150;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.nor-report-dialog {
+    padding: 2em;
+    background-color: darkgray;
+}
+
+.nor-reason-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.nor-message-container {
+    margin: 1em 0;
+}
+
+.nor-reason-list button {
+    border: 1px solid darkgray;
+    border-radius: 0.1em;
+    padding: 0.5em 1em;
+    margin: 0.5em;
+}

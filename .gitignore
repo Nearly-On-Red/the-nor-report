@@ -1,0 +1,6 @@
+.chrome
+.firefox
+__python__
+*.pyc
+*.sublime-*
+secrets.json

@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+  "name": "The NoR Report",
+  "version": "0.0.1",
+
+  "description": "Allows you to report spoilers and other rule violations in the NearlyOnRed Twitch chat.",
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.twitch.tv/nearlyonred"],
+      "js": ["twitch_content.js"],
+      "css": ["twitch_content.css"]
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "report@nearly.red"
+    }
+  }
+}
