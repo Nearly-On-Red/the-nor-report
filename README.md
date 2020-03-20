@@ -12,10 +12,9 @@ This browser extension allows you to report messages in the NearlyOnRed twitch c
 
 ## Using
 
-To report a message, simply hover over it. A large red report button should appear in the top left.
-After clicking this message, you will be presented with a number of reason for your report.
-Simply choose the one that fits best.
-The moderators will receive your report and will take action.
+To report a message, simply hover over it. A large red report button should appear in the top right.
+After clicking this button, you will be presented with possible reasons for your report.
+Simply choose the one that fits best. The moderators will receive your report and will take action.
 
 ## Installing
 
