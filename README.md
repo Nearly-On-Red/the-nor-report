@@ -39,7 +39,7 @@ If these steps didn't work, for example with a `Package is invalid: 'CRX_REQUIRE
 - Open the extension settings again and click `Load unpacked`. Select the folder that contains the files you unpacked.
 - Check to make sure the extension appears in the list of extensions and does not display any errors.
 
-If this didn't work either, try asking for help in the NearlyOnRed Discord server or installing a good browser like Firefox.
+If this didn't work either, try asking for help in the [NearlyOnRed Discord server](https://www.nearlyonred.com/discord/) or installing a good browser like Firefox.
 
 ### I'm using Safari, a mobile device, or a non-insider version of Edge
-Sorry, but these platforms are not currently supported. If you want to report a message, you can contact moderators directly by using Twitch's whisper feature, or by using the NearlyOnRed Discord server. They don't bite... usually.
+Sorry, but these platforms are not currently supported. If you want to report a message, you can contact moderators directly by using Twitch's whisper feature, or by using the [NearlyOnRed Discord server](https://www.nearlyonred.com/discord/). They don't bite... usually.
