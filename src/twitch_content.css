@@ -46,6 +46,7 @@
 }
 
 .nor-message-container {
+    max-width: 340px;
     margin: 1em 0;
 }
 
