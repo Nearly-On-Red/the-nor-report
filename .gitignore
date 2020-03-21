@@ -4,3 +4,5 @@ __python__
 *.pyc
 *.sublime-*
 secrets.json
+chromekey.pem
+build
