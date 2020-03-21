@@ -5,7 +5,6 @@ const REPORT_BOT_ID = '500840578';
 
 
 function getInternalInstance(elem) {
-    elem = elem.wrappedJSObject || elem;
     for (const key in elem)
         if (key.startsWith('__reactInternalInstance$'))
             return elem[key];

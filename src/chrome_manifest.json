@@ -7,7 +7,7 @@
 
   "content_scripts": [
     {
-      "matches": ["*://*.twitch.tv/nearlyonred"],
+      "matches": ["*://*.twitch.tv/*"],
       "js": ["injector.js"],
       "css": ["twitch_content.css"]
     }

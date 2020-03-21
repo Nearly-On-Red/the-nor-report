@@ -7,11 +7,12 @@
 
   "content_scripts": [
     {
-      "matches": ["*://*.twitch.tv/nearlyonred"],
-      "js": ["twitch_content.js"],
+      "matches": ["*://*.twitch.tv/*"],
+      "js": ["injector.js"],
       "css": ["twitch_content.css"]
     }
   ],
+  "web_accessible_resources": ["twitch_content.js"],
   "browser_specific_settings": {
     "gecko": {
       "id": "report@nearly.red"
