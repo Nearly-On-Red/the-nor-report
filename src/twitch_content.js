@@ -73,7 +73,14 @@ const reportDialogTemplate = document.createElement('template')
 reportDialogTemplate.innerHTML = `
 <div class="nor-report-wrapper">
     <div class="nor-report-dialog">
-        <h3>Report</h3>
+        <div class="nor-report-header">
+            <h3>Report</h3>
+            <button class="nor-close-button">
+                <svg width="20px" height="20px" version="1.1" viewBox="0 0 20 20" x="0px" y="0px" fill="currentColor">
+                    <g><path d="M8.5 10L4 5.5 5.5 4 10 8.5 14.5 4 16 5.5 11.5 10l4.5 4.5-1.5 1.5-4.5-4.5L5.5 16 4 14.5 8.5 10z"></path></g>
+                </svg>
+            </button>
+        </div>
         <div class="nor-message-container"></div>
         <h4>What is wrong with this message?</h4>
         <div class="nor-reason-list">${
@@ -116,6 +123,9 @@ function showReportDialog({target}) {
     report.addEventListener('click', ({target}) => {
         if (target == report)
             document.body.removeChild(report);
+    });
+    report.querySelector('.nor-close-button').addEventListener('click', () => {
+        document.body.removeChild(report);
     });
     report.querySelector('.nor-report-dialog').style['background-color'] = getComputedStyle(document.querySelector('.chat-room'))['background-color'];
     report.querySelector('.nor-message-container').appendChild(messageElement);

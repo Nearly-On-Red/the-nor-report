@@ -43,6 +43,13 @@
     overflow-y: auto;
 }
 
+.nor-report-header {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
 .nor-reason-list {
     display: flex;
     flex-direction: column;
