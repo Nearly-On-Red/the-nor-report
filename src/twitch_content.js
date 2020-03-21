@@ -54,10 +54,8 @@ function getChat() {
     return instance && instance.stateNode.props;
 }
 
-const chat = getChat();
-
 function sendWhisper(target, content) {
-    chat.onSendMessage(`/w ${target} ${content}`);
+    getChat().onSendMessage(`/w ${target} ${content}`);
 }
 
 // Functionality starts here
@@ -134,56 +132,54 @@ function showReportDialog({target}) {
     document.body.appendChild(report);
 }
 
-if (chat.authToken) {
-    const newElementListeners = {
-        'chat-line__message': elem => {
-            const message = getMessage(elem);
-            if (!message) return;
+const newElementListeners = {
+    'chat-line__message': elem => {
+        const message = getMessage(elem);
+        if (!message) return;
 
-            if (message.id.indexOf('-') != -1) {
-                // Your own messages don't have a proper ID, so we ignore them
-                // This is fine because you wouldn't want to report yourself anyway
+        if (message.id.indexOf('-') != -1 && getChat().authToken) {
+            // Your own messages don't have a proper ID, so we ignore them
+            // This is fine because you wouldn't want to report yourself anyway
 
-                // Add report button
-                let reportButton = document.createElement('button');
-                reportButton.classList.add('nor-report-btn');
-                reportButton.innerText = 'Report';
-                reportButton.addEventListener('click', showReportDialog);
-                elem.appendChild(reportButton);
-            }
-        },
+            // Add report button
+            let reportButton = document.createElement('button');
+            reportButton.classList.add('nor-report-btn');
+            reportButton.innerText = 'Report';
+            reportButton.addEventListener('click', showReportDialog);
+            elem.appendChild(reportButton);
+        }
+    },
 
-        'thread-header__title-bar-container': elem => {
-            const thread = getWhisperThread(elem);
-            if (!thread) return;
+    'thread-header__title-bar-container': elem => {
+        const thread = getWhisperThread(elem);
+        if (!thread) return;
 
-            // Thread IDs are of the form <user 1 id>_<user 2 id>
-            if (thread.threadID.split('_').includes(REPORT_BOT_ID)) {
-                // Close any thread with the report bot, so it doesn't clutter your screen
-                thread.onClose();
+        // Thread IDs are of the form <user 1 id>_<user 2 id>
+        if (thread.threadID.split('_').includes(REPORT_BOT_ID)) {
+            // Close any thread with the report bot, so it doesn't clutter your screen
+            thread.onClose();
+        }
+    }
+}
+
+const observer = new MutationObserver(function mutationCallback(mutations) {
+    for (const mutation of mutations) {
+        for (const node of mutation.addedNodes) {
+            const cl = node.classList;
+            if (!cl) continue;
+
+            for (const [className, callback] of Object.entries(newElementListeners)) {
+                if (node.classList.contains(className))
+                    callback(node);
+
+                for (const childNode of node.getElementsByClassName(className))
+                    callback(childNode);
             }
         }
     }
+});
 
-    const observer = new MutationObserver(function mutationCallback(mutations) {
-        for (const mutation of mutations) {
-            for (const node of mutation.addedNodes) {
-                const cl = node.classList;
-                if (!cl) continue;
-
-                for (const [className, callback] of Object.entries(newElementListeners)) {
-                    if (node.classList.contains(className))
-                        callback(node);
-
-                    for (const childNode of node.getElementsByClassName(className))
-                        callback(childNode);
-                }
-            }
-        }
-    });
-
-    observer.observe(document.body, {
-        subtree: true,
-        childList: true,
-    });
-}
+observer.observe(document.body, {
+    subtree: true,
+    childList: true,
+});
