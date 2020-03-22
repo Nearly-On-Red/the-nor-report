@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "The NoR Report",
-  "version": "0.0.4",
+  "version": "0.1.0",
 
   "description": "Allows you to report spoilers and other rule violations in the NearlyOnRed Twitch chat.",
 
