@@ -19,8 +19,7 @@ Simply choose the one that fits best. The moderators will receive your report an
 ## Installing
 
 ### I'm using Firefox, or another Gecko-based browser
-- Visit the [releases page](https://github.com/Nearly-On-Red/the-nor-report/releases), and click on the latest `firefox-nor_report-X.Y.Z.xpi` file
-- Wait for a pop-up, then click `Continue to Installation` and `Add`
+Just visit https://addons.mozilla.org/en-US/firefox/addon/the-nor-report/ and click `Add to Firefox`
 
 ### I'm using Chrome on Linux, or another Chromium-based browser
 - Visit the [releases page](https://github.com/Nearly-On-Red/the-nor-report/releases), and right-click on the latest `chrome-nor_report-X.Y.Z.crx` file. Select the `Save as...` option to download the extension
