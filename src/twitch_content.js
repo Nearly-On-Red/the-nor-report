@@ -100,16 +100,20 @@ function showReportDialog({target}) {
 
     // Clean the cloned message element
     // Remove mod icons
-    const modIcon = messageElement.querySelector('.mod-icon');
-    if (modIcon) {
-        // Find the topmost container of the mod icon that's below the message element
-        let elem = modIcon;
-        while (elem.parentElement !== messageElement) {
-            elem = elem.parentElement;
-        }
 
-        messageElement.removeChild(elem);
-    }
+    // Commented out because Twitch changes its HTML sometimes, breaking this.
+    // I'll just leave the mod icons in. ~hmry (2021-04-04, 20:22)
+    
+    // const modIcon = messageElement.querySelector('.mod-icon');
+    // if (modIcon) {
+    //     // Find the topmost container of the mod icon that's below the message element
+    //     let elem = modIcon;
+    //     while (elem.parentElement !== messageElement) {
+    //         elem = elem.parentElement;
+    //     }
+
+    //     messageElement.removeChild(elem);
+    // }
 
     // Remove report button
     const messageReportButton = messageElement.querySelector('.nor-report-btn');
