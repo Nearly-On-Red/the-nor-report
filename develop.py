@@ -42,23 +42,27 @@ def rename(source, destination):
 
 class EventHandler(FileSystemEventHandler):
     def on_created(self, event):
+        if event.is_directory:
+            return
         print(event.event_type, event.src_path)
-        assert not event.is_directory
         copy(Path(event.src_path))
 
     def on_modified(self, event):
+        if event.is_directory:
+            return
         print(event.event_type, event.src_path)
-        assert not event.is_directory
         copy(Path(event.src_path))
 
     def on_deleted(self, event):
+        if event.is_directory:
+            return
         print(event.event_type, event.src_path)
-        assert not event.is_directory
         delete(Path(event.src_path))
 
     def on_moved(self, event):
+        if event.is_directory:
+            return
         print(event.event_type, event.src_path, event.dest_path)
-        assert not event.is_directory
         rename(Path(event.src_path), Path(event.dest_path))
 
 if __name__ == "__main__":
