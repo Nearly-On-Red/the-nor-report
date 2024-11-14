@@ -4,9 +4,9 @@ const REPORT_BOT_NAME = 'norreportbot';
 const REPORT_BOT_ID = '500840578';
 
 
-function getInternalInstance(elem) {
+function getFiber(elem) {
     for (const key in elem)
-        if (key.startsWith('__reactInternalInstance$'))
+        if (key.startsWith('__reactFiber$'))
             return elem[key];
 }
 
@@ -31,7 +31,7 @@ function findInstance(instance, predicate) {
 
 function getMessage(elem) {
     const instance = findInstance(
-        getInternalInstance(elem),
+        getFiber(elem),
         i => i.stateNode && i.stateNode.props && i.stateNode.props.message);
 
     return instance && instance.stateNode.props.message;
@@ -39,7 +39,7 @@ function getMessage(elem) {
 
 function getWhisperThread(elem) {
     const instance = findInstance(
-        getInternalInstance(elem),
+        getFiber(elem),
         i => i.stateNode && i.stateNode.props && i.stateNode.props.threadID);
 
     return instance && instance.stateNode.props;
@@ -47,7 +47,7 @@ function getWhisperThread(elem) {
 
 function getChat() {
     const instance = findInstance(
-        getInternalInstance(document.querySelector('.chat-room')),
+        getFiber(document.querySelector('.chat-room')),
         i => i.stateNode && i.stateNode.props && i.stateNode.props.onSendMessage);
 
     return instance && instance.stateNode.props;
