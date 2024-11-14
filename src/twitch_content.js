@@ -4,16 +4,16 @@ const REPORT_BOT_NAME = 'norreportbot';
 const REPORT_BOT_ID = '500840578';
 
 
-function getInternalInstance(elem) {
+function getFiber(elem) {
     for (const key in elem)
-        if (key.startsWith('__reactInternalInstance$'))
+        if (key.startsWith('__reactFiber$'))
             return elem[key];
 }
 
-function findInstance(instance, predicate) {
-    // Recurse through the parents of an instance until one matching the predicate is found
+function findFiber(fiber, predicate) {
+    // Recurse through the parents of a fiber until one matching the predicate is found
 
-    let cur = instance,
+    let cur = fiber,
         depth = 0;
 
     while (cur && !predicate(cur)) {
@@ -30,27 +30,27 @@ function findInstance(instance, predicate) {
 // Twitch helpers
 
 function getMessage(elem) {
-    const instance = findInstance(
-        getInternalInstance(elem),
+    const fiber = findFiber(
+        getFiber(elem),
         i => i.stateNode && i.stateNode.props && i.stateNode.props.message);
 
-    return instance && instance.stateNode.props.message;
+    return fiber && fiber.stateNode.props.message;
 }
 
 function getWhisperThread(elem) {
-    const instance = findInstance(
-        getInternalInstance(elem),
+    const fiber = findFiber(
+        getFiber(elem),
         i => i.stateNode && i.stateNode.props && i.stateNode.props.threadID);
 
-    return instance && instance.stateNode.props;
+    return fiber && fiber.stateNode.props;
 }
 
 function getChat() {
-    const instance = findInstance(
-        getInternalInstance(document.querySelector('.chat-room')),
+    const fiber = findFiber(
+        getFiber(document.querySelector('.chat-room')),
         i => i.stateNode && i.stateNode.props && i.stateNode.props.onSendMessage);
 
-    return instance && instance.stateNode.props;
+    return fiber && fiber.stateNode.props;
 }
 
 function sendWhisper(target, content) {
