@@ -50,6 +50,21 @@
     justify-content: space-between;
 }
 
+.nor-close-button {
+    width: 20px;
+    height: 20px;
+}
+
+.tw-root--theme-light .nor-close-button:hover,
+.tw-root--theme-light .nor-close-button:active {
+    backdrop-filter: brightness(90%);
+}
+
+.tw-root--theme-dark .nor-close-button:hover,
+.tw-root--theme-dark .nor-close-button:active {
+    backdrop-filter: brightness(180%);
+}
+
 .nor-reason-list {
     display: flex;
     flex-direction: column;
@@ -65,4 +80,14 @@
     border-radius: 0.1em;
     padding: 0.5em 1em;
     margin: 0.5em;
+}
+
+.tw-root--theme-light .nor-reason-list button:hover,
+.tw-root--theme-light .nor-reason-list button:active {
+    backdrop-filter: brightness(90%);
+}
+
+.tw-root--theme-dark .nor-reason-list button:hover,
+.tw-root--theme-dark .nor-reason-list button:active {
+    backdrop-filter: brightness(180%);
 }
