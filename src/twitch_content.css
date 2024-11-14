@@ -55,6 +55,16 @@
     height: 20px;
 }
 
+.tw-root--theme-light .nor-close-button:hover,
+.tw-root--theme-light .nor-close-button:active {
+    backdrop-filter: brightness(90%);
+}
+
+.tw-root--theme-dark .nor-close-button:hover,
+.tw-root--theme-dark .nor-close-button:active {
+    backdrop-filter: brightness(180%);
+}
+
 .nor-reason-list {
     display: flex;
     flex-direction: column;
