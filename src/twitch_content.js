@@ -10,10 +10,10 @@ function getFiber(elem) {
             return elem[key];
 }
 
-function findInstance(instance, predicate) {
-    // Recurse through the parents of an instance until one matching the predicate is found
+function findFiber(fiber, predicate) {
+    // Recurse through the parents of a fiber until one matching the predicate is found
 
-    let cur = instance,
+    let cur = fiber,
         depth = 0;
 
     while (cur && !predicate(cur)) {
@@ -30,27 +30,27 @@ function findInstance(instance, predicate) {
 // Twitch helpers
 
 function getMessage(elem) {
-    const instance = findInstance(
+    const fiber = findFiber(
         getFiber(elem),
         i => i.stateNode && i.stateNode.props && i.stateNode.props.message);
 
-    return instance && instance.stateNode.props.message;
+    return fiber && fiber.stateNode.props.message;
 }
 
 function getWhisperThread(elem) {
-    const instance = findInstance(
+    const fiber = findFiber(
         getFiber(elem),
         i => i.stateNode && i.stateNode.props && i.stateNode.props.threadID);
 
-    return instance && instance.stateNode.props;
+    return fiber && fiber.stateNode.props;
 }
 
 function getChat() {
-    const instance = findInstance(
+    const fiber = findFiber(
         getFiber(document.querySelector('.chat-room')),
         i => i.stateNode && i.stateNode.props && i.stateNode.props.onSendMessage);
 
-    return instance && instance.stateNode.props;
+    return fiber && fiber.stateNode.props;
 }
 
 function sendWhisper(target, content) {
